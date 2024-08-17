@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl3q238dtqmuf"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_k7khx"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_k7khx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 1.0
+offset_right = 1151.0
+offset_bottom = 41.0
+color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = -1
+offset_left = 1.0
+offset_top = 6.0
+offset_right = 679.0
+offset_bottom = 33.0
+alignment = 1
+
+[node name="HPBar" type="ProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 60.0
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 40.0
+show_percentage = false
