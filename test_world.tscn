@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://blru14nuai75a"]
+[gd_scene load_steps=6 format=3 uid="uid://blru14nuai75a"]
 
-[ext_resource type="PackedScene" uid="uid://cm37ckpfycmuh" path="res://player.tscn" id="1_pj0t8"]
+[ext_resource type="PackedScene" uid="uid://cm37ckpfycmuh" path="res://player/player.tscn" id="1_pj0t8"]
 [ext_resource type="PackedScene" uid="uid://cl3q238dtqmuf" path="res://hud.tscn" id="1_rps15"]
+[ext_resource type="PackedScene" uid="uid://cqmoedx0hwqcx" path="res://enemies/placeholder_enemy.tscn" id="3_64sjp"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8x1o0"]
 
@@ -13,7 +14,7 @@ size = Vector2(225, 57)
 [node name="HUD" parent="." instance=ExtResource("1_rps15")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(107, 117)
+position = Vector2(189, 234)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
 scale = Vector2(224, 57)
@@ -23,8 +24,11 @@ mesh = SubResource("QuadMesh_8x1o0")
 shape = SubResource("RectangleShape2D_ngfac")
 
 [node name="Player" parent="." instance=ExtResource("1_pj0t8")]
-position = Vector2(30, 30)
+position = Vector2(254, 118)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlaceholderEnemy" parent="." instance=ExtResource("3_64sjp")]
+position = Vector2(117, 105)
 
 [connection signal="health_changed" from="Player" to="HUD" method="_on_player_health_changed"]

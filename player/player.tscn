@@ -1,0 +1,70 @@
+[gd_scene load_steps=14 format=3 uid="uid://cm37ckpfycmuh"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_etv1t"]
+[ext_resource type="Script" path="res://hurtbox.gd" id="2_a0pi0"]
+[ext_resource type="Script" path="res://hitbox.gd" id="3_mysqi"]
+[ext_resource type="Script" path="res://player/state/state_machine.gd" id="4_ovpeu"]
+[ext_resource type="Script" path="res://player/state/movement/idle.gd" id="4_y7r8c"]
+[ext_resource type="Script" path="res://player/state/movement/walk.gd" id="6_cyc55"]
+[ext_resource type="Script" path="res://player/state/movement/jump.gd" id="7_hk2tm"]
+
+[sub_resource type="Gradient" id="Gradient_fo1sk"]
+colors = PackedColorArray(0.135033, 0.437425, 0.630672, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bwb4q"]
+gradient = SubResource("Gradient_fo1sk")
+width = 32
+height = 48
+fill_from = Vector2(0.133028, 0.137615)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmrl3"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aswdm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tls4n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqsap"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_etv1t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_bwb4q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nmrl3")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("2_a0pi0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_aswdm")
+debug_color = Color(0.81323, 0.67625, 0.0306258, 0.42)
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_mysqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-30, 1)
+shape = SubResource("CircleShape2D_tls4n")
+debug_color = Color(0.963474, 0.163579, 0.261141, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-56, 1)
+shape = SubResource("RectangleShape2D_hqsap")
+debug_color = Color(0.93401, 0.221989, 0.338307, 0.42)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_ovpeu")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_y7r8c")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("6_cyc55")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("7_hk2tm")
