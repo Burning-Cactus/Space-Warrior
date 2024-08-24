@@ -1,16 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqmoedx0hwqcx"]
+[gd_scene load_steps=6 format=3 uid="uid://cqmoedx0hwqcx"]
 
 [ext_resource type="Script" path="res://enemies/placeholder_enemy.gd" id="1_0fq03"]
+[ext_resource type="Texture2D" uid="uid://cvth7a0dtmcjc" path="res://assets/TestSlime.png" id="2_ditg0"]
 [ext_resource type="Script" path="res://hurtbox.gd" id="2_ulwdq"]
-
-[sub_resource type="Gradient" id="Gradient_d37ra"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y45oc"]
-gradient = SubResource("Gradient_d37ra")
-width = 32
-height = 32
-fill_from = Vector2(0.610092, 0.701835)
-fill_to = Vector2(0.926606, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87ytu"]
 size = Vector2(32, 32)
@@ -18,10 +10,11 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cng3f"]
 
 [node name="PlaceholderEnemy" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_0fq03")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_y45oc")
+texture = ExtResource("2_ditg0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_87ytu")
@@ -31,3 +24,4 @@ script = ExtResource("2_ulwdq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_cng3f")
+debug_color = Color(0.940045, 0.193509, 0.389171, 0.42)

@@ -34,6 +34,8 @@ func _process(delta: float):
 	state_machine.update(delta)
 	#if Input.is_action_just_pressed("weak_attack"):
 		#damage(2)
+	if position.y > 3000:
+		position.y = 0
 
 
 func _physics_process(delta: float) -> void:

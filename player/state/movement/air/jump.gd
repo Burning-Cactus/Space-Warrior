@@ -1,4 +1,4 @@
-extends State
+extends "in_air.gd"
 
 func enter() -> void:
 	if parent.is_on_floor():
@@ -7,12 +7,7 @@ func enter() -> void:
 		parent.air_jumps -= 1
 		parent.velocity.y = parent.JUMP_VELOCITY
 
-func update(delta: float) -> void:
-	pass
-
 func physics_update(delta: float) -> void:
-	if not parent.is_on_floor():
-		parent.velocity += parent.get_gravity() * delta
-
-func exit() -> void:
-	pass
+	super(delta)
+	if parent.velocity.y <= 0:
+		switch_state.emit('fall')

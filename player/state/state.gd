@@ -4,14 +4,17 @@ var parent: CharacterBody2D
 
 signal switch_state(name: String)
 
+func init(_parent: CharacterBody2D) -> void:
+	parent = _parent
+
 func enter() -> void:
-	push_error("Unimplemented enter function in state")
+	pass
 
 func update(delta: float) -> void:
-	push_error("Unimplemented update function in state")
+	pass
 
 func physics_update(delta: float) -> void:
-	push_error("Unimplemented physics update function in state")
+	pass
 
 func exit():
-	push_error("Unimplemented exit function in state")
+	pass

@@ -10,7 +10,7 @@ func init(_parent: CharacterBody2D):
 	for state in get_children():
 		assert(state is State, "ERROR: Non-state node assigned to state machine.")
 		states[state.name.to_lower()] = state
-		state.parent = _parent
+		state.init(_parent)
 		state.switch_state.connect(_on_switch_state)
 	
 	current_state = initial_state
