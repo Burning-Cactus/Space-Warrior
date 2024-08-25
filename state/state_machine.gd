@@ -12,7 +12,8 @@ func init(_parent: CharacterBody2D):
 		states[state.name.to_lower()] = state
 		state.init(_parent)
 		state.switch_state.connect(_on_switch_state)
-	
+	if !initial_state:
+		initial_state = get_children()[0]
 	current_state = initial_state
 
 func set_state(new_state: State) -> void:

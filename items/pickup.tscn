@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://krtw7uf878be"]
+
+[ext_resource type="Script" path="res://items/pickup.gd" id="1_ub6ly"]
+
+[sub_resource type="Gradient" id="Gradient_njpiu"]
+offsets = PackedFloat32Array(0.188312, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_57cmv"]
+gradient = SubResource("Gradient_njpiu")
+width = 16
+height = 16
+fill_from = Vector2(0.527523, 0.56422)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18t2f"]
+size = Vector2(16, 16)
+
+[node name="Pickup" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_ub6ly")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_57cmv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_18t2f")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

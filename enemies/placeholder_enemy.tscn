@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemies/placeholder_enemy.gd" id="1_0fq03"]
 [ext_resource type="Texture2D" uid="uid://cvth7a0dtmcjc" path="res://assets/TestSlime.png" id="2_ditg0"]
-[ext_resource type="Script" path="res://hurtbox.gd" id="2_ulwdq"]
+[ext_resource type="Script" path="res://detection/hurtbox.gd" id="2_ulwdq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87ytu"]
 size = Vector2(32, 32)
@@ -20,6 +20,8 @@ texture = ExtResource("2_ditg0")
 shape = SubResource("RectangleShape2D_87ytu")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("2_ulwdq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
